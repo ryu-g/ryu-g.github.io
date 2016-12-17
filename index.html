@@ -15,7 +15,7 @@
 		<button class="button_remove"  id="removeFirst">remove last</button>
 		<button class="button_reset"  id="reset">reset</button>
 	</div>
-		<a><textarea id="target" placeholder="type any message and add it!!"></textarea></a>
+		<textarea id="target" placeholder="type any message and add it!!"></textarea>
 	<div class="posts"></div>
 	<script>
 		$(document).ready(function(){});
@@ -55,9 +55,9 @@
 		});
 		//----------------------
 		$(document).on("click",'.edit',function(){//特定の要素の編集
-			var txt = $(this).parent().children('p').text();
-			$(this).parent().children('p').html('<input type="text" value="'+txt+'">');
-			$(this).parent().children('p').append('<button class="save">save</button>');
+			var txt = $(this).parent().children('a').text();
+			$(this).parent().children('a').html('<input type="text" value="'+txt+'">');
+			$(this).parent().children('a').append('<button class="save">save</button>');
 		});
 		$(document).on("click",'.save',function(){
 			var txt = $(this).parent().children('input').val();

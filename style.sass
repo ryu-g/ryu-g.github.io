@@ -1,0 +1,22 @@
+$gray : #333
+$add : #28bf39
+$remove : #bf4628
+$focucedgray : #444
+
+@mixin button($bg-color, $txt-color)
+	font-weight: bold
+	background-color: $bg-color
+	color: $txt-color
+	display: inline-block
+	width: 100px
+	padding: 5px 10px
+	border: 0px solid #DDD
+	margin: 5px 0
+
+.button_add
+	@include button($gray, $add)
+.button_remove
+	@include button($gray, $remove)
+.button_reset
+	@include button($gray, $remove)
+

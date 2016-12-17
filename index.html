@@ -15,22 +15,21 @@
 		<button class="button_remove"  id="removeFirst">remove last</button>
 		<button class="button_reset"  id="reset">reset</button>
 	</div>
-		<textarea id="target" placeholder="type any message and add it!!"></textarea>
+		<a><textarea id="target" placeholder="type any message and add it!!"></textarea></a>
 	<div class="posts"></div>
 	<script>
-		$(document).ready(function(){
-	//イベントハンドラの登録などのコード
-});
+		$(document).ready(function(){});
+
 		var count=1;
 		$(function(){
 		function createElement(count){
 			var block = $("<div class=\"post\"></div>");
-			$(block).append('<div> <p>おだし'+count+'号</p>　<button class="remove">remove</button> <button class="edit">edit</button></div>');
+			$(block).append('<div> <a>おだし'+count+'号</a>　<button class="remove">remove</button> <button class="edit">edit</button></div>');
 			return block;
 		}
 		function sendMessage(text){
 			var block = $("<div class=\"post\"></div>");
-			$(block).append('<div> <p>'+text+'</p><button class="remove">remove</button> <button class="edit">edit</button></div>');
+			$(block).append('<div> <a>'+text+'</a><button class="remove">remove</button> <button class="edit">edit</button></div>');
 			return block;
 		}
 		$('#addFirst').click(function(){
@@ -66,8 +65,12 @@
 		});
 		$(document).on("click",'#addText',function(){//任意のテキスト入力
 			var txt = $("textarea,target").val();
-			if(txt!=''){$('.posts').append(sendMessage(txt));}
-			$("#target").attr('placeholder','ここに文字を入れてからそのボタンを押せ!!');
+			if(txt==''){
+				$("#target").attr('placeholder','ここに文字を入れてからそのボタンを押せ!!');
+			}else if(txt!=''){
+				$('.posts').append(sendMessage(txt));
+				$('#target').val('');
+			}
 		})
 	})
 

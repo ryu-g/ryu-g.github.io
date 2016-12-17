@@ -1,3 +1,7 @@
+body {
+  width: 960px;
+  margin: 0 auto; }
+
 .button_add {
   font-weight: bold;
   background-color: #333;
@@ -11,7 +15,7 @@
 .button_remove {
   font-weight: bold;
   background-color: #333;
-  color: #bf4628;
+  color: #ef4317;
   display: inline-block;
   width: 100px;
   padding: 5px 10px;
@@ -21,7 +25,7 @@
 .button_reset {
   font-weight: bold;
   background-color: #333;
-  color: #bf4628;
+  color: #ef4317;
   display: inline-block;
   width: 100px;
   padding: 5px 10px;

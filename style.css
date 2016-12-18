@@ -12,6 +12,9 @@ body {
   border: 0px solid #DDD;
   margin: 5px 0; }
 
+.button_add:hover {
+  background-color: #666; }
+
 .button_remove, .remove {
   font-weight: bold;
   background-color: #333;
@@ -51,5 +54,20 @@ body {
   padding: 5px 10px;
   border: 0px solid #DDD;
   margin: 5px 0; }
+
+.button_remove:hover {
+  background-color: #666; }
+
+.remove:hover {
+  background-color: #666; }
+
+.button_reset:hover {
+  background-color: #666; }
+
+.edit:hover {
+  background-color: #666; }
+
+.save:hover {
+  background-color: #666; }
 
 /*# sourceMappingURL=style.css.map */

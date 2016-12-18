@@ -21,7 +21,10 @@ $txt: #AAA
 @mixin size($width, $height)
 	width: $width+px
 	height: $height+px
-
+canvas
+	@include size(600,600)
+	background-color: #555
+	opacity: 0.3
 body
 	color: $txt
 	width: 960px

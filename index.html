@@ -21,7 +21,8 @@
 <div class="container">
 	<h3>Canvasタグを扱う</h3>
 	<p>webanimationAPIあるけど、グラフィックの描画をcanvasで試してみる</p>
-	<canvas id="field">図形を表示するには、canvasタグをサポートしたブラウザが必要です。</canvas>
+	<p>cssでcanvasのサイズを指定するのでなく、canvasタグに直接サイズ指定を書く</p>
+	<canvas id="field" width="600" height="600">図形を表示するには、canvasタグをサポートしたブラウザが必要です。</canvas>
 </div>
 
 
@@ -100,7 +101,7 @@
 		for (var j=0; j<60;j++){
 			for (var i=0; i < 60; i++) {
 				context.beginPath();
-				context.rect(i*20,j*20,10,10);
+				if(((i%2==0)&&(j%2!=0))||((i%2!=0)&&(j%2==0)))context.rect(i*20,j*20,10,10);
 				context.stroke();
 			}
 		}

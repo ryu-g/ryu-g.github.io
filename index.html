@@ -7,73 +7,90 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div id="hello">
+	<div class="container">
+		<h1>javascriptの練習</h1>
+	</div>
+	<div class="container">
+		<h3>domの操作(要素の追加と削除、テキストエリア内の文字列操作)</h3>
 		<button class="button_add"  id="addText">addText</button>
 		<button class="button_add"  id="addFirst">addFirst</button>
 		<button class="button_add"  id="addLast">addLast</button>
 		<button class="button_remove"  id="removeLast">remove first</button>
 		<button class="button_remove"  id="removeFirst">remove last</button>
 		<button class="button_reset"  id="reset">reset</button>
-	</div>
 		<textarea id="target" placeholder="type any message and add it!!"></textarea>
-	<div class="posts"></div>
-	<script>
-		$(document).ready(function(){});
+		<div class="posts"></div>
+	</div>
+		<script>
+			$(document).ready(function(){});
 
-		var count=1;
-		$(function(){
-		function createElement(count){
-			var block = $("<div class=\"post\"></div>");
-			$(block).append('<div> <a>おだし'+count+'号</a>　<button class="remove">remove</button> <button class="edit">edit</button></div>');
-			return block;
-		}
-		function sendMessage(text){
-			var block = $("<div class=\"post\"></div>");
-			$(block).append('<div> <a>'+text+'</a><button class="remove">remove</button> <button class="edit">edit</button></div>');
-			return block;
-		}
-		$('#addFirst').click(function(){
-			$('.posts').prepend(createElement(count));
-			count++;
-		});
-		$('#addLast').click(function(){
-			$('.posts').append(createElement(count));
-			count++;
-		});
-		$('#removeFirst').click(function(){
-			$('.posts .post:last').remove();
-		});
-		$('#removeLast').click(function(){
-			$('.posts .post:first').remove();
-		});
-		$('#reset').click(function(){
-			count=1;
-			$('.posts').empty();
-		})
-		$(document).on("click",'.remove',function(){//特定の要素の削除
-			$(this).parent().remove();
-		});
-		//----------------------
-		$(document).on("click",'.edit',function(){//特定の要素の編集
-			var txt = $(this).parent().children('a').text();
-			$(this).parent().children('a').html('<input type="text" value="'+txt+'">');
-			$(this).parent().children('a').append('<button class="save">save</button>');
-		});
-		$(document).on("click",'.save',function(){
-			var txt = $(this).parent().children('input').val();
-			$(this).parent().html(txt);
-		});
-		$(document).on("click",'#addText',function(){//任意のテキスト入力
-			var txt = $("textarea,target").val();
-			if(txt==''){
-				$("#target").attr('placeholder','ここに文字を入れてからそのボタンを押せ!!');
-			}else if(txt!=''){
-				$('.posts').append(sendMessage(txt));
-				$('#target').val('');
+			var count=1;
+			var yet=0;
+			$(function(){
+			function createElement(count){
+				var block = $("<div class=\"post\"></div>");
+				$(block).append('<div> <a>おだし'+count+'号</a>　<button class="remove">remove</button> <button class="edit">edit</button></div>');
+				return block;
 			}
+			function sendMessage(text){
+				var block = $("<div class=\"post\"></div>");
+				$(block).append('<div> <a>'+text+'</a><button class="remove">remove</button> <button class="edit">edit</button></div>');
+				return block;
+			}
+			function EmptyMessage(message){
+				var block =$("div class=\"post\"></div>");
+				$(block).append('<div><a>'+message+'</a></div>')
+				return block;
+			}
+			$('#addFirst').click(function(){//要素を最初に追加
+				$('.posts').prepend(createElement(count));
+				count++;
+			});
+			$('#addLast').click(function(){//要素を最後に追加
+				$('.posts').append(createElement(count));
+				count++;
+			});
+			$('#removeFirst').click(function(){//最初の要素を削除
+				console.log(document.getElementsByClassName("posts").length);
+				if(document.getElementsByClassName("posts").length!= 0){
+				$('.posts .post:last').remove();
+			}else{
+				EmptyMessage("empty");
+			}
+			});
+			$('#removeLast').click(function(){//最後の要素を削除
+				$('.posts .post:first').remove();
+			});
+			$('#reset').click(function(){//全ての要素を削除、カウント初期化
+				count=1;
+				$('.posts').empty();
+			})
+			$(document).on("click",'.remove',function(){//任意の要素の削除
+				$(this).parent().remove();
+			});
+			//----------------------
+			$(document).on("click",'.edit',function(){//特定の要素の編集開始
+				var txt = $(this).parent().children('a').text();
+				$(this).parent().children('a').html('<input type="text" value="'+txt+'">');
+				$(this).parent().children('a').append('<button class="save">save</button>');
+			});
+			$(document).on("click",'.save',function(){//編集されたテキストの保存
+				var txt = $(this).parent().children('input').val();
+				$(this).parent().html(txt);
+			});
+			$(document).on("click",'#addText',function(){//任意のテキスト入力
+				var txt = $("textarea,target").val();
+				if(txt==''){
+					$("#target").attr('placeholder','ここに文字を入れてからそのボタンを押せ!'+Array(yet).join('!'));
+					yet++;
+				}else if(txt!=''){
+					$('.posts').append(sendMessage(txt));
+					$('#target').val('');
+					yet=0;
+				}
+			})
 		})
-	})
 
-</script>
+	</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 $gray : #333
-$add : #28bf39
-$remove : #ef4317
+$green : #28bf39
+$red : #ef4317
+$orange : #ffea2d
 $focucedgray : #444
 
 @mixin button($bg-color, $txt-color)
@@ -18,9 +19,12 @@ body
 	margin: 0 auto
 
 .button_add
-	@include button($gray, $add)
-.button_remove
-	@include button($gray, $remove)
+	@include button($gray, $green)
+.button_remove,.remove
+	@include button($gray, $red)
 .button_reset
-	@include button($gray, $remove)
-
+	@include button($gray, $red)
+.edit
+	@include button($gray, $orange)
+.save
+	@include button($gray, $green)

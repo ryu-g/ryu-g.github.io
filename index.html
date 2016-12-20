@@ -7,7 +7,7 @@
 
 
 <h1>javascriptの練習</h1>
-<div class="container">
+<div id="buttons" class="container">
 	<h3>domの操作(要素の追加と削除、テキストエリア内の文字列操作)</h3>
 	<button class="button_add"  id="addText">addText</button>
 	<button class="button_add"  id="addFirst">addFirst</button>
@@ -18,18 +18,6 @@
 	<textarea id="target" placeholder="type any message and add it!!"></textarea>
 	<div class="posts"></div>
 </div>
-<!-- <div class="container">
-	<h3>Canvasタグを扱う</h3>
-	<p>webanimationAPIあるけど、グラフィックの描画をまずはcanvasで試してみる</p>
-	<p>cssでcanvasのサイズを指定するのでなく、canvasタグに直接サイズ指定を書く</p>
-	<canvas id="field" width="600" height="600">図形を表示するには、canvasタグをサポートしたブラウザが必要です。</canvas>
-</div> -->
-<!-- <div class="container">
-	<h3>Ajaxを扱う</h3>
-</div> -->
-
-
-
 <script>
 	$(document).ready(function(){});
 	var count=1;
@@ -59,7 +47,6 @@
 			count++;
 		});
 		$('#removeFirst').click(function(){//最初の要素を削除
-			console.log(document.getElementsByClassName("posts").length);
 			if(document.getElementsByClassName("posts").length!= 0){
 				$('.posts .post:last').remove();
 			}else{
@@ -89,24 +76,38 @@
 		$(document).on("click",'#addText',function(){//任意のテキスト入力
 			var txt = $("textarea,target").val();
 			if(txt==''){
-				$("#target").attr('placeholder','ここに文字を入れてからそのボタンを押せ!'+Array(yet).join('!'));
-				yet++;
+				// $("#target").prop('disabled',true);
 			}else if(txt!=''){
 				$('.posts').append(sendMessage(txt));
 				$('#target').val('');
-				yet=0;
 			}
-		})
-	// var canvas = document.getElementById('field');
-	// if(canvas.getContext){
-	// 	var context = canvas.getContext('2d');
-	// 	for (var j=0; j<60;j++){
-	// 		for (var i=0; i < 60; i++) {
-	// 			context.beginPath();
-	// 			if(((i%2==0)&&(j%2!=0))||((i%2!=0)&&(j%2==0)))context.rect(i*10,j*10,10,10);
-	// 			context.stroke();
-	// 		}
-	// 	}
-	// }
-});
+		});
+		$(document).on("click",function(){
+			switchAddTextAble();
+			switchRemove();
+		});
+		function switchAddTextAble(){
+			var textarea = $("textarea,target").val();
+			if(textarea!=''){
+				$("#addText").prop('disabled',false);
+			}else if(textarea==''){
+				$("#addText").prop('disabled',true);
+			}
+		}
+		function switchRemoveAble(){
+			var child=$('#posts').children();
+			if(child!=0){
+				$("#removeFirst").prop('disabled',false);
+				$("#removeLast").prop('disabled',false);
+				$("#reset").prop('disabled',false);
+			}else if(child==0){
+				$("#removeFirst").prop('disabled',false);
+				$("#removeLast").prop('disabled',false);
+				$("#reset").prop('disabled',false);
+			}
+		}
+	});
 </script>
+
+<p>(1)posts要素の個数 0個->削除ボタン⒥不能</p>
+<p>(2)テキストボックスに名にも入ってなかったらaddTextボタン不能</p>

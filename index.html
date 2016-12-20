@@ -78,7 +78,7 @@
 
 		});
 		$(document).on("click",'#addText',function(){//任意のテキスト入力
-			var txt = $("input,target").val();
+			var txt = escape_html($("input,target").val());
 			if(txt==''){
 				// $("#target").prop('disabled',true);
 			}else if(txt!=''){

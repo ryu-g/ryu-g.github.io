@@ -113,7 +113,7 @@
 				$("#reset").prop('disabled',true);
 			}
 		}
-		function escape_html (string) {
+		function escape_html (string) {//特殊文字はエスケープさせてreturn
 			if(typeof string !== 'string') {
 				return string;
 			}
@@ -140,3 +140,5 @@
 <p>disabledなボタンのhoverのスタイルを無効にする
 <a href="http://www.koikikukan.com/archives/2015/01/14-005555.php">http://www.koikikukan.com/archives/2015/01/14-005555.php</a>
 </p>
+
+

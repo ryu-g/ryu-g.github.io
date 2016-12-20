@@ -24,6 +24,9 @@ body {
   margin: 5px 0; }
   .button_add:hover {
     background-color: #666; }
+  .button_add:disabled {
+    background-color: #333;
+    color: #666; }
 
 .button_remove, .remove {
   outline: 0;
@@ -37,6 +40,9 @@ body {
   margin: 5px 0; }
   .button_remove:hover, .remove:hover {
     background-color: #666; }
+  .button_remove:disabled, .remove:disabled {
+    background-color: #333;
+    color: #666; }
 
 .button_reset {
   outline: 0;
@@ -50,6 +56,9 @@ body {
   margin: 5px 0; }
   .button_reset:hover {
     background-color: #666; }
+  .button_reset:disabled {
+    background-color: #333;
+    color: #666; }
 
 .edit {
   outline: 0;
@@ -63,6 +72,9 @@ body {
   margin: 5px 0; }
   .edit:hover {
     background-color: #666; }
+  .edit:disabled {
+    background-color: #333;
+    color: #666; }
 
 .save {
   outline: 0;
@@ -76,6 +88,9 @@ body {
   margin: 5px 0; }
   .save:hover {
     background-color: #666; }
+  .save:disabled {
+    background-color: #333;
+    color: #666; }
 
 #target {
   width: 900px;

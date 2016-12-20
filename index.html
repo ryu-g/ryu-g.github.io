@@ -9,7 +9,7 @@
 <h1>javascriptの練習</h1>
 <div id="buttons" class="container">
 	<h3>domの操作(要素の追加と削除、テキストエリア内の文字列操作)</h3>
-	<button class="button_add"  id="addText">addText</button>
+	<button class="button_add"  id="addText" disabled='false'>addText</button>
 	<button class="button_add"  id="addFirst">addFirst</button>
 	<button class="button_add"  id="addLast">addLast</button>
 	<button class="button_remove"  id="removeLast">remove first</button>
@@ -84,7 +84,7 @@
 		});
 		$(document).on("click",function(){
 			switchAddTextAble();
-			switchRemove();
+			switchRemoveAble();
 		});
 		function switchAddTextAble(){
 			var textarea = $("textarea,target").val();
@@ -95,7 +95,7 @@
 			}
 		}
 		function switchRemoveAble(){
-			var child=$('#posts').children();
+			var child=$('.posts>div').children().length;
 			if(child!=0){
 				$("#removeFirst").prop('disabled',false);
 				$("#removeLast").prop('disabled',false);

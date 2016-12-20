@@ -18,13 +18,15 @@
 	<textarea id="target" placeholder="type any message and add it!!"></textarea>
 	<div class="posts"></div>
 </div>
-<div class="container">
+<!-- <div class="container">
 	<h3>Canvasタグを扱う</h3>
 	<p>webanimationAPIあるけど、グラフィックの描画をまずはcanvasで試してみる</p>
 	<p>cssでcanvasのサイズを指定するのでなく、canvasタグに直接サイズ指定を書く</p>
 	<canvas id="field" width="600" height="600">図形を表示するには、canvasタグをサポートしたブラウザが必要です。</canvas>
-</div>
-
+</div> -->
+<!-- <div class="container">
+	<h3>Ajaxを扱う</h3>
+</div> -->
 
 
 
@@ -95,16 +97,16 @@
 				yet=0;
 			}
 		})
-	var canvas = document.getElementById('field');
-	if(canvas.getContext){
-		var context = canvas.getContext('2d');
-		for (var j=0; j<60;j++){
-			for (var i=0; i < 60; i++) {
-				context.beginPath();
-				if(((i%2==0)&&(j%2!=0))||((i%2!=0)&&(j%2==0)))context.rect(i*10,j*10,10,10);
-				context.stroke();
-			}
-		}
-	}
-})
+	// var canvas = document.getElementById('field');
+	// if(canvas.getContext){
+	// 	var context = canvas.getContext('2d');
+	// 	for (var j=0; j<60;j++){
+	// 		for (var i=0; i < 60; i++) {
+	// 			context.beginPath();
+	// 			if(((i%2==0)&&(j%2!=0))||((i%2!=0)&&(j%2==0)))context.rect(i*10,j*10,10,10);
+	// 			context.stroke();
+	// 		}
+	// 	}
+	// }
+});
 </script>

@@ -15,7 +15,7 @@
 	<button class="button_remove"  id="removeLast" disabled='false'>remove first</button>
 	<button class="button_remove"  id="removeFirst" disabled='false'>remove last</button>
 	<button class="button_reset"  id="reset" disabled='false'>reset</button>
-	<textarea id="target" placeholder="type any message and add it!!"></textarea>
+	<input id="target" placeholder="type any message and add it!!">
 	<div class="posts"></div>
 </div>
 <script>
@@ -67,23 +67,24 @@
 			$(this).parent().parent().remove();
 			switchRemoveAble();
 		});
-		//----------------------
 		$(document).on("click",'.edit',function(){//特定の要素の編集開始
-			var txt = $(this).parent().children('a').text();
+			var txt = escape_html($(this).parent().children('a').text());
 			$(this).parent().children('a').html('<input type="text" value="'+txt+'">');
 			$(this).parent().children('a').append('<button class="save">save</button>');
 		});
 		$(document).on("click",'.save',function(){//編集されたテキストの保存
-			var txt = $(this).parent().children('input').val();
+			var txt = escape_html($(this).parent().children('input').val());
 			$(this).parent().html(txt);
+
 		});
 		$(document).on("click",'#addText',function(){//任意のテキスト入力
-			var txt = $("textarea,target").val();
+			var txt = $("input,target").val();
 			if(txt==''){
 				// $("#target").prop('disabled',true);
 			}else if(txt!=''){
 				$('.posts').append(sendMessage(txt));
 				$('#target').val('');
+				switchAddTextAble();
 			}
 		});
 		$(document).on("click",function(){
@@ -93,10 +94,10 @@
 			switchAddTextAble();
 		});
 		function switchAddTextAble(){
-			var textarea = $("textarea,target").val();
-			if(textarea!=''){
+			var input = $("input,target").val();
+			if(input!=''){
 				$("#addText").prop('disabled',false);
-			}else if(textarea==''){
+			}else if(input==''){
 				$("#addText").prop('disabled',true);
 			}
 		}
@@ -112,10 +113,25 @@
 				$("#reset").prop('disabled',true);
 			}
 		}
+		function escape_html (string) {
+			if(typeof string !== 'string') {
+				return string;
+			}
+			return string.replace(/[&'`"<>]/g, function(match) {
+				return {
+					'&': '&amp;',
+					"'": '&#x27;',
+					'`': '&#x60;',
+					'"': '&quot;',
+					'<': '&lt;',
+					'>': '&gt;',
+				}[match]
+			});
+		}
 	});
 </script>
 
-<p>(1)posts要素の個数 0個->削除ボタン⒥不能</p>
+<p>(1)posts要素の個数 0個->削除ボタンが不能</p>
 <p>(2)テキストボックスに名にも入ってなかったらaddTextボタン不能</p>
 
 <h3>参考にしたページ</h3>

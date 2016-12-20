@@ -12,9 +12,9 @@
 	<button class="button_add"  id="addText" disabled='false'>addText</button>
 	<button class="button_add"  id="addFirst">addFirst</button>
 	<button class="button_add"  id="addLast">addLast</button>
-	<button class="button_remove"  id="removeLast">remove first</button>
-	<button class="button_remove"  id="removeFirst">remove last</button>
-	<button class="button_reset"  id="reset">reset</button>
+	<button class="button_remove"  id="removeLast" disabled='false'>remove first</button>
+	<button class="button_remove"  id="removeFirst" disabled='false'>remove last</button>
+	<button class="button_reset"  id="reset" disabled='false'>reset</button>
 	<textarea id="target" placeholder="type any message and add it!!"></textarea>
 	<div class="posts"></div>
 </div>
@@ -52,16 +52,20 @@
 			}else{
 				EmptyMessage("empty");
 			}
+			switchRemoveAble();
 		});
 		$('#removeLast').click(function(){//最後の要素を削除
 			$('.posts .post:first').remove();
+			switchRemoveAble();
 		});
 		$('#reset').click(function(){//全ての要素を削除、カウント初期化
 			count=1;
 			$('.posts').empty();
+			switchRemoveAble();
 		})
 		$(document).on("click",'.remove',function(){//任意の要素の削除
-			$(this).parent().remove();
+			$(this).parent().parent().remove();
+			switchRemoveAble();
 		});
 		//----------------------
 		$(document).on("click",'.edit',function(){//特定の要素の編集開始
@@ -83,8 +87,10 @@
 			}
 		});
 		$(document).on("click",function(){
-			switchAddTextAble();
 			switchRemoveAble();
+		});
+		$(document).on("keyup",function(){
+			switchAddTextAble();
 		});
 		function switchAddTextAble(){
 			var textarea = $("textarea,target").val();
@@ -95,15 +101,15 @@
 			}
 		}
 		function switchRemoveAble(){
-			var child=$('.posts>div').children().length;
+			var child = $('.posts').children('div').length;
 			if(child!=0){
 				$("#removeFirst").prop('disabled',false);
 				$("#removeLast").prop('disabled',false);
 				$("#reset").prop('disabled',false);
 			}else if(child==0){
-				$("#removeFirst").prop('disabled',false);
-				$("#removeLast").prop('disabled',false);
-				$("#reset").prop('disabled',false);
+				$("#removeFirst").prop('disabled',true);
+				$("#removeLast").prop('disabled',true);
+				$("#reset").prop('disabled',true);
 			}
 		}
 	});
@@ -111,3 +117,10 @@
 
 <p>(1)posts要素の個数 0個->削除ボタン⒥不能</p>
 <p>(2)テキストボックスに名にも入ってなかったらaddTextボタン不能</p>
+
+<h3>参考にしたページ</h3>
+<p>jqueryでつかえるイベント<a href="http://jquerystudy.info/reference/events/keyup.html">http://jquerystudy.info/reference/events/keyup.html</a></p>
+
+<p>disabledなボタンのhoverのスタイルを無効にする
+<a href="http://www.koikikukan.com/archives/2015/01/14-005555.php">http://www.koikikukan.com/archives/2015/01/14-005555.php</a>
+</p>

@@ -4,6 +4,8 @@ $green : #28bf39
 $red : #ef4317
 $orange : #ffea2d
 $txt: #AAA
+$blue: #4286f4
+
 
 @mixin button($bg-color, $txt-color)
 	outline: 0
@@ -19,6 +21,7 @@ $txt: #AAA
 		background-color: $light-glay
 	&:disabled
 		color: #666
+		background-color: $bg-color
 
 @mixin size($width, $height)
 	width: $width+px

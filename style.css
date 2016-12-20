@@ -25,8 +25,8 @@ body {
   .button_add:hover {
     background-color: #666; }
   .button_add:disabled {
-    background-color: #333;
-    color: #666; }
+    color: #666;
+    background-color: #333; }
 
 .button_remove, .remove {
   outline: 0;
@@ -41,8 +41,8 @@ body {
   .button_remove:hover, .remove:hover {
     background-color: #666; }
   .button_remove:disabled, .remove:disabled {
-    background-color: #333;
-    color: #666; }
+    color: #666;
+    background-color: #333; }
 
 .button_reset {
   outline: 0;
@@ -57,8 +57,8 @@ body {
   .button_reset:hover {
     background-color: #666; }
   .button_reset:disabled {
-    background-color: #333;
-    color: #666; }
+    color: #666;
+    background-color: #333; }
 
 .edit {
   outline: 0;
@@ -73,8 +73,8 @@ body {
   .edit:hover {
     background-color: #666; }
   .edit:disabled {
-    background-color: #333;
-    color: #666; }
+    color: #666;
+    background-color: #333; }
 
 .save {
   outline: 0;
@@ -89,8 +89,8 @@ body {
   .save:hover {
     background-color: #666; }
   .save:disabled {
-    background-color: #333;
-    color: #666; }
+    color: #666;
+    background-color: #333; }
 
 #target {
   width: 900px;
